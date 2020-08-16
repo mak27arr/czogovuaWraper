@@ -38,7 +38,9 @@ namespace czogovuaWraper
                 cefInit = true;
             }
             browserLoading = true;
-            browser = new ChromiumWebBrowser(siteUrl);
+            browser = new ChromiumWebBrowser(siteUrl) { 
+            DialogHandler = new TempFileDialogHandler(param.SingPatch)
+            };
             browser.LoadingStateChanged += BrowserLoadingStateChanged;
             int attempt = time_out_ms/100;
             while (browserLoading)
